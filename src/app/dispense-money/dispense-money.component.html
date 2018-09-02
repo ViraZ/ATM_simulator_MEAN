@@ -1,0 +1,32 @@
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+                <!--<a class="nav-link active" >Active</a>-->
+            </li>
+            <li class="nav-item">
+
+            </li>
+            <li class="nav-item">
+
+            </li>
+        </ul>
+    </div>
+    <div class="card-body" *ngIf="!error_message">
+
+        <h5 class="card-title" *ngIf="money_balance!== null && money_balance!== ''" >Available Balance : {{ money_balance }}</h5>
+        <p class="card-text">Your Dispensed Money :)</p>
+
+        <p class="card-text" *ngIf="dispensed_money[2]!==0" >100 X {{ dispensed_money[2] }}</p>
+        <p class="card-text" *ngIf="dispensed_money[1]!==0">500 X {{ dispensed_money[1] }}</p>
+        <p class="card-text" *ngIf="dispensed_money[0]!==0">2000 X {{ dispensed_money[0] }}</p>
+
+        <button class="btn btn-primary" type="submit" (click)="onExit()" >Exit</button>
+    </div>
+
+    <div class="card-body" *ngIf="error_message">
+        <h5 class="card-title" *ngIf="error_message!== null" >Error : {{ error_message }}</h5>
+        <button class="btn btn-primary" type="submit" (click)="onExit()" >Exit</button>
+    </div>
+
+</div>

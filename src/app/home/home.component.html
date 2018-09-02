@@ -1,0 +1,47 @@
+<h3>ATM</h3>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4">
+
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+                <div
+                        id="user-data"
+                        ngModelGroup="userData"
+                        #userData="ngModelGroup">
+
+                    <label for="cardNumber" style="font-size: 20px">Card Number</label>
+                    <input type="number"
+                           id="cardNumber"
+                           class="form-control"
+                           ngModel
+                           name="cardNumber"
+                           required
+                           oninput="this.value = this.value.replace(/[^0-9.]/g, '');
+                            this.value = this.value.replace(/(\..*)\./g, '$1');"
+                           onKeyDown="if(this.value.length===16 && event.keyCode!==8)
+                                return false;">
+
+                    <div class="form-group">
+                        <label for="pin" style="font-size: 20px">PIN</label>
+                        <input
+                                type="password"
+                                id="pin"
+                                class="form-control"
+                                ngModel
+                                name="pin"
+                                required>
+                    </div>
+                </div>
+                <p *ngIf="!userData.valid && userData.touched">Please fill all fields</p>
+                <button
+                        class="btn btn-primary"
+                        type="submit"
+                        [disabled]="!f.valid">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
